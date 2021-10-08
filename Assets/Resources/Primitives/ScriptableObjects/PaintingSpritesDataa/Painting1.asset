@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b29775eceba4e5e96d231810c8312c6, type: 3}
+  m_Name: Painting1
+  m_EditorClassIdentifier: 
+  defaultSprite: {fileID: 21300000, guid: 465e7d2c85178c248a149bc8e8b6714c, type: 3}
+  firstSpriteToSwap: {fileID: 21300000, guid: eefbd936cd0a89e43ad42c767771cff9, type: 3}
