@@ -9,31 +9,31 @@ using UnityEngine.UI;
 public class AngerBar : MonoBehaviour
 {
     /// <summary>
-    /// Максимальний рівень "злості"
+    /// Max value of anger bar
     /// </summary>
     [SerializeField] private float maxAngerValue;
     /// <summary>
-    /// Поточний рівень "злості"
+    /// Current value of anger bar
     /// </summary>
     private float _currentAngerValue;
 
     /// <summary>
-    /// Зменшення рівня "злості" щосекунди, якщо нема колізії зі столом
+    /// How much the anger bar value decrease per second
     /// </summary>
     [SerializeField] private float decreaseDeltaAnger;
     /// <summary>
-    /// Збільшення рівня "злості" щосекунди, якщо є колізія зі столом
+    /// How much the anger bar value increase per second
     /// </summary>
     [SerializeField] private float increaseDeltaAnger;
 
     /// <summary>
-    /// Шкала для "злості"
+    /// Reference to anger bar Game Object
     /// </summary>
     [SerializeField] private GameObject AngerProgressBar;
 
     [SerializeField] private Image FillAngerBar;
     /// <summary>
-    /// Чи зменшується значення шкали "злості"
+    /// Defines if anger bar should be decreasing
     /// </summary>
     private bool angerDecreasing;
 
@@ -46,32 +46,21 @@ public class AngerBar : MonoBehaviour
     }
     
     /// <summary>
-    /// Посилання на LinePainter
+    /// Reference to line painter script
     /// </summary>
     [SerializeField] private LinePainter _linePainter;
     
-    /// <summary>
-    /// Колайдер столу
-    /// </summary>
-    //private Collider _tableCollider;
-
-    ///// <summary>
-    ///// Гетер колайдера стола для доступу іншим скриптам
-    ///// </summary>
-    //public Collider TableCollider => _tableCollider;
-
 
     private void FixedUpdate()
     {
         if (_currentAngerValue > 0 && angerDecreasing)
         {
-            //зменшуємо "злість"
             DecreaseAnger();
         }
     }
 
     /// <summary>
-    /// Зменшує рівень "злості"
+    /// Decreasing anger bar value. Should be called once per frame
     /// </summary>
     public void DecreaseAnger()
     {
@@ -89,7 +78,7 @@ public class AngerBar : MonoBehaviour
     }
 
     /// <summary>
-    /// Збільшує рівень "злості"
+    /// Increasing anger bar value. Should be called once per frame
     /// </summary>
     public void IncreaseAnger()
     {
@@ -106,6 +95,9 @@ public class AngerBar : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Pauses script`s work and deactivates UI element
+    /// </summary>
     public void DeactivateAngerProgressBar()
     {
         AngerProgressBar.gameObject.SetActive(false);
@@ -116,6 +108,9 @@ public class AngerBar : MonoBehaviour
         AngerProgressBar.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Unpauses script`s work and activates UI element
+    /// </summary>
     private void Awake()
     {
         _currentAngerValue = 0;

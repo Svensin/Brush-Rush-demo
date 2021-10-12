@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AngerBarNotifier : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     
+    /// <summary>
+    /// Actvates anger bar script and UI element, also stops anger decreasing
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
 
@@ -14,12 +16,19 @@ public class AngerBarNotifier : MonoBehaviour
         ScriptReferences.Instance.angerBar.ActivateAngerProgressBar();
     }
 
+    /// <summary>
+    /// Increases anger bar value while brush collides with table
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
-        //збільшуємо "злість"
         ScriptReferences.Instance.angerBar.IncreaseAnger();
     }
 
+    /// <summary>
+    /// Starts to decrease anger bar value, until brush doesn`t collide with table again
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         ScriptReferences.Instance.angerBar.IsAngerDecreasing = true;

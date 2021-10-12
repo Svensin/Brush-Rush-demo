@@ -9,36 +9,36 @@ using UnityEngine;
 public class BrushController : MonoBehaviour
 {
     /// <summary> 
-    /// Трансформ пензлика 
+    /// Referenece to brush`s transform 
     /// </summary>
     [SerializeField] Transform brushTransform;
     /// <summary> 
-    /// Нижній ліміт для пересування пензлика
+    /// Minimal y value which brush`s transform can reach
     /// </summary>
     [SerializeField] Transform minPoint;
     /// <summary> 
-    /// Верхній ліміт для пересування пензлика 
+    /// Maximal y value which brush`s transform can reach
     /// </summary>
     [SerializeField] Transform maxPoint;
     /// <summary> 
-    /// Чутливість слайдера 
+    /// Brush`s control sensitivity
     /// </summary>
     [SerializeField] float sensitivity;
 
     /// <summary> 
-    /// Фізичне тіло пензлика 
+    /// Referenece to brush`s rigidbody
     /// </summary>
     private Rigidbody _brushRigidbody;
     /// <summary> 
-    /// Висота девайсу 
+    /// Height of device display in pixels 
     /// </summary>
     private float _screenHeight;
     /// <summary> 
-    /// Нижня точка слайдера 
+    /// Lowest point on display in pixels player can slide to move the brush down
     /// </summary>
     private Vector2 _minTouchPosition;
     /// <summary> 
-    /// Верхня точка слайдера 
+    /// Highest point on display in pixels player can slide to move the brush down 
     /// </summary>
     private Vector2 _maxTouchPosition;
 
@@ -69,11 +69,11 @@ public class BrushController : MonoBehaviour
     }
 
     /// <summary>
-    /// Обраховує інтерпольоване значення між нижньою і верхньою точками слайдера
+    /// Inverse interpolation of brush position beetwen max and min points
     /// </summary>
-    /// <param name="startPointY">Нижня точка</param>
-    /// <param name="endPointY">Верхня точка</param>
-    /// <param name="interpolationPointY">Інтерпольована точка</param>
+    /// <param name="startPointY">Min point y value</param>
+    /// <param name="endPointY">Max point y value</param>
+    /// <param name="interpolationPointY">Brush`s position y value</param>
     /// <returns>Коєфіцієнт інтерполяції</returns>
     public float CalculatePositionInterpolation(float startPointY, float endPointY, float interpolationPointY)
     {
@@ -87,10 +87,10 @@ public class BrushController : MonoBehaviour
     }
 
     /// <summary>
-    /// Визначає крайні точки слайдера
+    /// Defines min and max points on display which player can slide to
     /// </summary>
-    /// <param name="touchPosition">Точка дотику</param>
-    /// <param name="interpolation">Значення коєфіцієнту інтерполяції</param>
+    /// <param name="touchPosition">Display postion of point where player has touched the screen to start brush movement</param>
+    /// <param name="interpolation">interpalation value. Needed to calculate display min and max points</param>
     public void DefineEdgeTouchPositions(Vector2 touchPosition, float interpolation)
     {
         float touchSegmentLength = _screenHeight / sensitivity;
@@ -101,10 +101,10 @@ public class BrushController : MonoBehaviour
     }
 
     /// <summary>
-    /// Пересуває пензлик на позицію дотику
+    /// Moves brush to position where player touches screen
     /// </summary>
-    /// <param name="touchPosition">Точка дотику</param>
-    /// <returns>Y-координата кінцевої позиції</returns>
+    /// <param name="touchPosition">Postion of player`s touch</param>
+    /// <returns>New brush`s positon y value</returns>
     public float MoveBrushToPosition(Vector2 touchPosition)
     {
         float touchYPosition = touchPosition.y;
@@ -120,7 +120,11 @@ public class BrushController : MonoBehaviour
         return moveToPositon.y;
     }
 
-    // TODO глянути на цей метод чи ок
+    /// <summary>
+    /// Moves to brush to wanted position between min and max points 
+    /// </summary>
+    /// <param name="interpolation">interpolation value</param>
+    /// <returns>New brush`s positon y value</returns>
     public float MoveBrushToPosition(float interpolation)
     {
         float minTouchPointY = _minTouchPosition.y;

@@ -36,7 +36,7 @@ namespace Interactables
 
             inkController.SetCapacityPercentage(percentToSet, true);
 
-            ScriptReferences.Instance.brushFlickeringEffect.StartEffect();
+            ScriptReferences.Instance.brushFlickeringEffect.StartOrContinueEffect();
         }
 
         /// <summary>
