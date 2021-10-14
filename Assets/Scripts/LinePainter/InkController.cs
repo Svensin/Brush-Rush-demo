@@ -55,7 +55,7 @@ public class InkController : MonoBehaviour
     /// <summary>
     /// Посилання на клас Level
     /// </summary>
-    [SerializeField] Level level;
+    [SerializeField] LevelMovement level;
 
     /// <summary>
     /// Перевірка запасу

@@ -2,22 +2,19 @@ using UnityEngine;
 
 namespace Interactables
 {
-    /// <summary>
-    /// Логіка ефекту чорнильниці
-    /// </summary>
     public class InkWellEffect : MonoBehaviour, IInteractable
     {
         /// <summary>
-        /// Посилання на InkController
+        /// reference InkController
         /// </summary>
         InkController inkController;
         /// <summary>
-        /// Булева змінна, що відповідає за перевірку того, чи використана чорнильния
+        /// checks if brush has already interacted with ink well
         /// </summary>
         private bool isRefilled = false;
 
         /// <summary>
-        /// Реалізація IInterectable
+        /// Disabes ink well collider
         /// </summary>
         public void Disable()
         {
@@ -25,7 +22,7 @@ namespace Interactables
         }
 
         /// <summary>
-        /// Реалізація IInterectable
+        /// Fully refills ink capacity
         /// </summary>
         public void Effect()
         {

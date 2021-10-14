@@ -5,7 +5,7 @@ using LevelLogic;
 namespace LevelLogic
 {
     /// <summary>
-    /// Відповідає за активацію об'єктів рівня
+    /// Makes level objects appear
     /// </summary>
     public class Producer : MonoBehaviour
     {

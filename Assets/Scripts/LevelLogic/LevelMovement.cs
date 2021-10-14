@@ -5,15 +5,15 @@ using UnityEngine;
 namespace LevelLogic
 {
     /// <summary>
-    /// Контролює переміщення рівня
+    /// Controls level movement
     /// </summary>
-    public class Level : MonoBehaviour
+    public class LevelMovement : MonoBehaviour
     {
         [Header("Blocks data")][Space]
         [SerializeField] public List<BlockData> BlocksData;
 
         /// <summary>
-        /// Швидкість переміщення рівня
+        /// Velocity of level movement
         /// </summary>
         [Header("Level props")][Space]
         [Range(1,15)][SerializeField] private int _velocity;
@@ -30,12 +30,10 @@ namespace LevelLogic
         public GameObject BadLinesContainer => badLinesContainer;
         
         /// <summary>
-        /// Початкова позиція
+        /// Initial  z value of position
         /// </summary>
         private float _initialZValue;
-        /// <summary>
-        /// Фізичне тіло рівня
-        /// </summary>
+      
         private Rigidbody _levelRigidBody;
 
         private bool isMoving = false;
@@ -55,7 +53,7 @@ namespace LevelLogic
         }
 
         /// <summary>
-        /// Рухає рівень
+        /// Moves level, should be called once per frame
         /// </summary>
         public void Move()
         {
@@ -65,13 +63,16 @@ namespace LevelLogic
         }
 
         /// <summary>
-        /// Зупиняє рівень
+        /// Stops level movement
         /// </summary>
         public void StopLevelMovement()
         {
             isMoving = false;
         }
 
+        /// <summary>
+        /// Starts level movement
+        /// </summary>
         public void StartLevelMovement()
         {
             isMoving = true;

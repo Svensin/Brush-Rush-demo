@@ -7,14 +7,14 @@ namespace GalleryLogic
     public class GalleryUi : BaseUi
     {
         /// <summary>
-        /// Панель із картинами.
+        /// Panel with all paintigs.
         /// </summary>
         public Canvas GalleryPanelCanvas => panelCanvas;
         
         public Button CloseGalleryButton => closePanelButton;
         
         /// <summary>
-        /// Закриває <see cref="Gallery"/>.
+        /// Closes <see cref="Gallery"/> menu.
         /// </summary>
         public override void Close()
         { 
@@ -24,7 +24,7 @@ namespace GalleryLogic
          
         
         /// <summary>
-        /// Відкриває <see cref="Gallery"/>.
+        /// Opens <see cref="Gallery"/> menu.
         /// </summary>
         public override void Open()
         {

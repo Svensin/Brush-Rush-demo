@@ -7,7 +7,7 @@ using Random = System.Random;
 using Utilities;
 
 /// <summary>
-/// Меню, яке показується після проходження <see cref="LevelLogic.Level"/>.
+/// Меню, яке показується після проходження <see cref="LevelLogic.LevelMovement"/>.
 /// </summary>
 public class CompleteLevelMenu : MonoBehaviour
 {

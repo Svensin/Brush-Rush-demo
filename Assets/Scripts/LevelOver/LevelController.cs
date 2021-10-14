@@ -49,7 +49,7 @@ public class LevelController : MonoBehaviour
     
     private BlocksSpawner _menuBlocksSpawner;
     private BlocksSpawner _levelBlocksSpawner;
-    private Level _level;
+    private LevelMovement _level;
     private MenuCarrousel _menuCarrousel;
     
     /// <summary>
@@ -81,16 +81,16 @@ public class LevelController : MonoBehaviour
     private bool _firstPhaseCoroutineEnded = false;
 
     /// <summary>
-    /// Стан <see cref="LevelLogic.Level"/>.
+    /// Стан <see cref="LevelLogic.LevelMovement"/>.
     /// </summary>
     private enum EndLevelState
     {
         /// <summary>
-        /// <see cref="LevelLogic.Level"/> виграно.
+        /// <see cref="LevelLogic.LevelMovement"/> виграно.
         /// </summary>
         Victory,
         /// <summary>
-        /// <see cref="LevelLogic.Level"/> програно.
+        /// <see cref="LevelLogic.LevelMovement"/> програно.
         /// </summary>
         Loss
     }
@@ -121,7 +121,7 @@ public class LevelController : MonoBehaviour
 
 
     /// <summary>
-    /// Зупиняє <see cref="LevelLogic.Level"/> та вимикає усі важливі скрипти із <see cref="ScriptReferences"/>.
+    /// Зупиняє <see cref="LevelLogic.LevelMovement"/> та вимикає усі важливі скрипти із <see cref="ScriptReferences"/>.
     /// </summary>
     private void StopLevel()
     {
@@ -155,7 +155,7 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Визначає поточний стан закінчення <see cref="LevelLogic.Level"/>.
+    /// Визначає поточний стан закінчення <see cref="LevelLogic.LevelMovement"/>.
     /// </summary>
     /// <param name="results">отримані <see cref="Results"/></param>
     /// <returns></returns>
@@ -225,7 +225,7 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Починає <see cref="LevelLogic.Level"/> та вмикає усі важливі скрипти з <see cref="ScriptReferences"/> для початку рівня.
+    /// Починає <see cref="LevelLogic.LevelMovement"/> та вмикає усі важливі скрипти з <see cref="ScriptReferences"/> для початку рівня.
     /// </summary>
     private void StartLevel()
     {

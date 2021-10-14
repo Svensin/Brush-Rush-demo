@@ -7,7 +7,7 @@ namespace LevelLogic
         protected BlockData spawnedBlock;
 
         /// <summary>
-        /// Секція для блоків.
+        /// Section for blocks.
         /// </summary>
         public enum Section
             {
@@ -21,11 +21,11 @@ namespace LevelLogic
         [SerializeField] protected string[] blockPrefabsPaths;
     
         /// <summary>
-        /// Спавнить блок на задану позицію.
+        /// Spawns a block at wanted position.
         /// </summary>
-        /// <param name="objectToSpawn">Asset із <see cref="Resources"/> який треба заспавнити.</param>
-        /// <param name="positionToSpawn">позиція спавну</param>
-        /// <param name="parent">батько</param>
+        /// <param name="objectToSpawn">Asset is from <see cref="Resources"/> which has to be spawned.</param>
+        /// <param name="positionToSpawn">spawn position</param>
+        /// <param name="parent">parent of spawned block</param>
         public BlockData InstantiateBlock(Object objectToSpawn, Vector3 positionToSpawn, Transform parent = null)
         {
             GameObject spawnedBlockGameObject = parent == null ? 
@@ -40,9 +40,9 @@ namespace LevelLogic
         }
 
         /// <summary>
-        /// Спавнить рандомний блок із префабів блоків на позицію.
+        /// Spawns random chosen from prefabs list block on wanted position
         /// </summary>
-        /// <param name="positionToSpawn">позиція</param>
+        /// <param name="positionToSpawn">spawn position</param>
         public virtual void SpawnRandomBlock(Vector3 positionToSpawn)
         {
             int sectionBlock = Random.Range(0, blockPrefabsPaths.Length);
@@ -56,7 +56,7 @@ namespace LevelLogic
         }
     
         /// <summary>
-        /// Ініціалізує усі контейнери для блоків.
+        /// Initializes all containers.
         /// </summary>
         private void InitializeLineContainers()
         {

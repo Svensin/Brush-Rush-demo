@@ -4,23 +4,20 @@ using UnityEngine;
 
 namespace Interactables
 {
-    /// <summary>
-    /// Логіка ефекту підвісної пастки
-    /// </summary>
     public class HangingTrapEffect : DisappearableTrap
     {
         /// <summary>
-        /// Посилання на InkController
+        /// Reference to InkController
         /// </summary>
         InkController inkController;
 
         /// <summary>
-        /// Скільки відсотків наждачка зніме з запасу чорнила
+        /// How many percentage of maximum value trap deals damage to ink capacity
         /// </summary>
         [Range(0f, 100f)] [SerializeField] float sandPaperDamagePercent;
 
         /// <summary>
-        /// Реалізація DisappearableTrap
+        /// Disables trap model
         /// </summary>
         public override void Disappear()
         {
@@ -28,7 +25,7 @@ namespace Interactables
         }
 
         /// <summary>
-        /// Реалізація IInterectable
+        /// Deals certain damage to ink capacity
         /// </summary>
         public override void Effect()
         {
@@ -40,7 +37,7 @@ namespace Interactables
         }
 
         /// <summary>
-        /// Реалізація IInterectable
+        /// Starts trap disappear animation and disables it`s collider
         /// </summary>
         public override void Disable()
         {
@@ -55,6 +52,10 @@ namespace Interactables
             trapAnimator = GetComponent<Animator>();
         }
 
+        /// <summary>
+        /// Starts effect and disables a trap
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
             if (inkController == null)
