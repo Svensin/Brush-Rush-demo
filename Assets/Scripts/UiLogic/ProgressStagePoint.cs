@@ -4,47 +4,47 @@ using UnityEngine.UI;
 namespace DefaultNamespace
 {
     /// <summary>
-    /// Стадія для видачі <see cref="Utilities.SaveLoadData.Painting.pieces"/>.
+    /// Stage of rewarding <see cref="Utilities.SaveLoadData.Painting.pieces"/>.
     /// </summary>
     public class ProgressStagePoint : MonoBehaviour
     {
         /// <summary>
-        /// Номер стадії
+        /// Number of the stage 
         /// </summary>
         [Range(0, 5)] [SerializeField] private int stageCount;
         
         /// <summary>
-        /// Об'єкт-зображення "галочки"
+        /// Obecject-image of the check mark
         /// </summary>
         [SerializeField] private GameObject tickImage;
         /// <summary>
-        /// Об'єкт-зображення "хрестика"
+        /// Obecject-image of the uncheck mark
         /// </summary>
         [SerializeField] private GameObject crossImage;
         /// <summary>
-        /// <see cref="Text.text"/>, де відображається к-ть <see cref="Utilities.SaveLoadData.Painting.pieces"/> за стадію.
+        /// <see cref="Text.text"/> where quantity of the <see cref="Utilities.SaveLoadData.Painting.pieces"/> for stage displayed.
         /// </summary>
         [SerializeField] private Text stageText;
 
         /// <summary>
-        /// Мінімальні-максимальні значення <see cref="Results.PaperPaintedRatio"/> у які входить стадія.
+        /// Min-max values of <see cref="Results.PaperPaintedRatio"/> which are in stage.
         /// </summary>
         [Header("Stage values")]
         [SerializeField] private Vector2 minMaxStageValues;
         /// <summary>
-        /// Поточне значення <see cref="Results.PaperPaintedRatio"/> для стадії.
+        /// Currents value of <see cref="Results.PaperPaintedRatio"/> for stage.
         /// </summary>
         [Range(0,1f)][SerializeField] private float stageValue;
         
         public float StageValue => stageValue;
 
         /// <summary>
-        /// Стан даної стадії.
+        /// Current stage state
         /// </summary>
         public StageState State { get; private set; }
 
         /// <summary>
-        /// Змінює <see cref="Text.text"/> для стадії.
+        /// Changes <see cref="Text.text"/> for stage.
         /// </summary>
         /// <param name="piecesCount">к-ть <see cref="Utilities.SaveLoadData.Painting.pieces"/></param>
         public void ChangeStageText(int piecesCount = 0)
@@ -53,9 +53,9 @@ namespace DefaultNamespace
         }
 
         /// <summary>
-        /// Змінює <see cref="StageState"/> стадії
+        /// Changes <see cref="StageState"/> for stage
         /// </summary>
-        /// <param name="state"><see cref="StageState"/> стадії</param>
+        /// <param name="state"><see cref="StageState"/> of stage</param>
         public void ChangeState(StageState state)
         {
             if (state == StageState.Cross)
@@ -79,16 +79,16 @@ namespace DefaultNamespace
     }
 
     /// <summary>
-    /// Стан <see cref="ProgressStagePoint"/>.
+    /// Stage of <see cref="ProgressStagePoint"/>.
     /// </summary>
     public enum StageState
     {
         /// <summary>
-        /// <see cref="ProgressStagePoint"/> не пройдена.
+        /// <see cref="ProgressStagePoint"/> is unchecked.
         /// </summary>
         Cross,
         /// <summary>
-        /// <see cref="ProgressStagePoint"/> пройдена.
+        /// <see cref="ProgressStagePoint"/> is checked.
         /// </summary>
         Tick
     }

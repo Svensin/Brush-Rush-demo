@@ -5,24 +5,24 @@ using Utilities.ScriptableObjects;
 namespace UiLogic.SpriteSwappers
 {
     /// <summary>
-    /// Базовий клас для зміни спрайтів.
+    /// Base class for sprite swap.
     /// </summary>
     public abstract class SpriteSwapper : MonoBehaviour
     {
         /// <summary>
-        /// <see cref="ScriptableObject"/> який містить у собі спрайти для зміни.
+        /// <see cref="ScriptableObject"/> which contains all sprites for swapping.
         /// </summary>
         [SerializeField] protected SpritesToSwapObject spritesToSwapObject;
         
         /// <summary>
-        /// Поточний <see cref="Image"/>.
+        /// Current <see cref="Image"/>.
         /// </summary>
         [SerializeField] protected Image currentImage;
 
         /// <summary>
         /// <summary>
-        /// Змінює <see cref="Sprite"/> <see cref="currentImage"/> на відповідно зазначений.
-        ///Додається на OnClick на компоненті <see cref="Button"/>.
+        /// Swaps <see cref="Sprite"/> <see cref="currentImage"/> for wanted one.
+        ///Is added on OnClick component <see cref="Button"/>.
         /// </summary>
         /// </summary>
         public virtual void Swap()

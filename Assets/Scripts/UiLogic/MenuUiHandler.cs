@@ -7,7 +7,7 @@ using GalleryLogic;
 namespace UiLogic
 {
     /// <summary>
-    /// Обробник для головного меню.
+    /// Handler for main menu
     /// </summary>
     [DisallowMultipleComponent]
     public class MenuUiHandler : MonoBehaviour
@@ -15,11 +15,11 @@ namespace UiLogic
         private Gallery _gallery;
         private Options _options;
         /// <summary>
-        /// Кнопка відкриття <see cref="Gallery"/>.
+        /// Button which opens <see cref="Gallery"/>.
         /// </summary>
         [SerializeField] private Button openGalleryButton;
         /// <summary>
-        /// Кнопка відкриття <see cref="Options"/>.
+        /// Button which opens <see cref="Options"/>.
         /// </summary>
         [SerializeField] private Button[] optionsButtons;
 
