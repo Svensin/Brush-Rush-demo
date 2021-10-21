@@ -6,28 +6,28 @@ using UnityEngine.UI;
 namespace Utilities.SaveLoadData
 {
     /// <summary>
-    /// Серіалізована модель картини для збереження/завантаження у <see cref="SaversLoaders.PaintingSaverLoader"/>.
+    /// Sereilized model of painting for saving/loading in/from <see cref="SaversLoaders.PaintingSaverLoader"/>.
     /// </summary>
     [Serializable]
     public class Painting
     {
         /// <summary>
-        /// Ідентифікатор картини
+        /// Id of painting
         /// </summary>
         public string name;
         /// <summary>
-        /// Масив частинок <see cref="Piece"/>.
+        /// Array of painting pieces<see cref="Piece"/>.
         /// </summary>
         public Piece[] pieces;
 
         public bool colorized;
 
         /// <summary>
-        /// Оновлює ігровий об'єкт <see cref="GameObject"/> із моделі <see cref="Painting"/>.
+        /// Update game object <see cref="GameObject"/> from model <see cref="Painting"/>.
         /// </summary>
-        /// <param name="paintingData">модель-картина</param>
-        /// <param name="gameObject">ігровий об'єкт-картина</param>
-        /// <returns>змінений об'єкт (optional)</returns>
+        /// <param name="paintingData">model-painting</param>
+        /// <param name="gameObject">game object-painting</param>
+        /// <returns>changed object(optional)</returns>
         public static GameObject UpdateImagePieces(Painting paintingData, GameObject gameObject)
         {
             for (int j = 0; j < gameObject.transform.childCount; j++)

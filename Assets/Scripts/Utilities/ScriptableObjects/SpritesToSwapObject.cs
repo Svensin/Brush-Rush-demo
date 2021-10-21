@@ -6,14 +6,14 @@ namespace Utilities.ScriptableObjects
     public class SpritesToSwapObject : ScriptableObject
     {
                 /// <summary>
-                /// Чорнобіла картина
+                /// Grayscale painting
                 /// </summary>
                 [Header("Sprites to swap")][Space]
                 [SerializeField] protected Sprite defaultSprite;
 
                 public Sprite DefaultSprite => defaultSprite;
                 /// <summary>
-                /// Кольорова картина
+                /// Colored painting
                 /// </summary>
                 [SerializeField] private Sprite firstSpriteToSwap;
 

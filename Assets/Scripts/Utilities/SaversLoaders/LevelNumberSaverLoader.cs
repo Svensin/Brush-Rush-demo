@@ -3,6 +3,9 @@ using Utilities.SaveLoadData;
 
 namespace Utilities.SaversLoaders
 {
+    /// <summary>
+    /// Saves data of levels<see cref="Gallery"/>.
+    /// </summary>
     public class LevelNumberSaverLoader : ISaveLoad
     {
         public void Save()

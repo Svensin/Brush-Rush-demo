@@ -28,7 +28,7 @@ public class ScriptReferences : SingletonComponent<ScriptReferences>
     [SerializeField] public AngerBar angerBar;
 
     [Header("Menu")][Space]
-    [SerializeField] public MenuCarrousel menuCarrousel;
+    [SerializeField] public MenuTableCycleCarrousel menuCarrousel;
     public MenuUiHandler menuUiHandler;
     
     [Header("Blocks spawners")][Space]

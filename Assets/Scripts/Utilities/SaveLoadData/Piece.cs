@@ -3,17 +3,17 @@ using System;
 namespace Utilities.SaveLoadData
 {
     /// <summary>
-    /// Серіалізована модель частини полотна для збереження/завантаження, що закриває картину. Є частиною <see cref="Painting"/>.
+    /// Sereilized model of painting piece for saving/loading. Is part of <see cref="Painting"/>.
     /// </summary>
     [Serializable]
     public class Piece
     {
         /// <summary>
-        /// Ідентифікатор частинки
+        /// ID of painting piece
         /// </summary>
         public string id;
         /// <summary>
-        /// Чи активна частинка полотна
+        /// is piece active
         /// </summary>
         public bool isEnabled;
     }

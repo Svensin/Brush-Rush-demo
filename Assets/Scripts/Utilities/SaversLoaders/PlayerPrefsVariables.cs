@@ -1,5 +1,8 @@
 namespace Utilities.SaversLoaders
 {
+    /// <summary>
+    /// Contains names of player prefs variables
+    /// </summary>
     public static class PlayerPrefsVariables
     {
         private const string sounds = "sounds";

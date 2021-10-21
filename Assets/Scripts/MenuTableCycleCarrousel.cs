@@ -4,19 +4,37 @@ using System.Collections.Generic;
 using LevelLogic;
 using UnityEngine;
 
-public class MenuCarrousel : MonoBehaviour
+public class MenuTableCycleCarrousel : MonoBehaviour
 {
+    /// <summary>
+    /// all level blocks which of menu table cycle is created of
+    /// </summary>
     [Header("Blocks data")] [Space] [SerializeField]
     private List<BlockData> blocksData;
     
     //[SerializeField] private Transform[] blocks;
+    /// <summary>
+    /// Gameobject which contains all table blocks as a parent object
+    /// </summary>
     [SerializeField] private Transform _blocks;
+    /// <summary>
+    /// rigidbody of all blocks
+    /// </summary>
     [SerializeField] private Rigidbody _rigidbody;
+    /// <summary>
+    /// block spawner of menu table blocks
+    /// </summary>
     [SerializeField] private BlocksSpawner _menuBlocksSpawner;
-
+    
     public List<BlockData> BlocksData => blocksData;
 
+    /// <summary>
+    /// point by reaching which table blocks deactivate
+    /// </summary>
     public Transform DeactivationPoint;
+    /// <summary>
+    /// point which is neede to remove unreachable for player papers
+    /// </summary>
     public Transform BrushPoint;
 
    
@@ -25,14 +43,17 @@ public class MenuCarrousel : MonoBehaviour
     [SerializeField] private BlockData _currentBlock;
     [SerializeField] private BlockData _lastBlock;
 
-    [Range(2, 10)] [SerializeField] private int carrouselSpeed;
+    /// <summary>
+    /// speed of table in menu
+    /// </summary>
+    [Range(2, 10)] [SerializeField] private int blockslSpeed;
 
     public BlockData CurrentBlock => _currentBlock;
 
     private void Update()
     {
         var prevPos = _blocks.position;
-        var newPos = new Vector3(prevPos.x, prevPos.y, prevPos.z - carrouselSpeed * Time.deltaTime);
+        var newPos = new Vector3(prevPos.x, prevPos.y, prevPos.z - blockslSpeed * Time.deltaTime);
         _rigidbody.MovePosition(newPos);
        
         
@@ -47,6 +68,10 @@ public class MenuCarrousel : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// removes all unreachable for player papers
+    /// </summary>
+    /// <param name="blockData">block which papers has to be removed</param>
     public void RemoveUnreachablePapers(BlockData blockData)
     {
         var unreachablePapers = new List<Transform>();

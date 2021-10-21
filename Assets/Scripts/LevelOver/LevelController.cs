@@ -55,7 +55,7 @@ public class LevelController : MonoBehaviour
     private BlocksSpawner _menuBlocksSpawner;
     private BlocksSpawner _levelBlocksSpawner;
     private LevelMovement _level;
-    private MenuCarrousel _menuCarrousel;
+    private MenuTableCycleCarrousel _menuCarrousel;
     
     /// <summary>
     /// <see cref="GameObject"/> main menu canvas <see cref="MenuUiHandler"/>.

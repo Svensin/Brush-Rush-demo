@@ -1,16 +1,16 @@
 namespace Utilities
 {
     /// <summary>
-    /// Інтерфейс, для підписання/відписання змінних
+    /// Interface for subscribing/unsubscribing of variables
     /// </summary>
     interface ISubscribable
     {
         /// <summary>
-        /// Скидає значення необхідних змінних
+        /// Set value of wanted values to default
         /// </summary>
         public void Unsubscribe();
         /// <summary>
-        /// Визначає значення необіхдних змінних
+        /// Defines value of wanted variables
         /// </summary>
         public void Subscribe();
     }
