@@ -6,28 +6,28 @@ using UnityEngine.UIElements;
 using Slider = UnityEngine.UI.Slider;
 
 /// <summary>
-/// Контролює рівень чорнила
+/// Controls ink capacity
 /// </summary>
 public class InkController : MonoBehaviour
 {
     /// <summary>
-    /// Поточний запас чорнил
+    /// Current ink capacity value
     /// </summary>
     [SerializeField] [Min(0)] private float _currentInkCapacity;
     /// <summary>
-    /// Гетер для поточного рівня чорнила
+    /// Current ink capacity value
     /// </summary>
     public float CurrentInkCapacity => _currentInkCapacity;
     /// <summary>
-    /// Максимальний рівень чорнила
+    /// Maximal ink capacity value
     /// </summary>
     [SerializeField] [Min(1)] private float _maxInkCapacity;
     /// <summary>
-    /// Гетер для максимального рівня чорнила
+    /// Maximal ink capacity value
     /// </summary>
     public float MaxInkCapacity => _maxInkCapacity;
     /// <summary>
-    /// Витрата чорнил за секунду
+    /// How much ink capacity is used for 1 second of painting
     /// </summary>
     [SerializeField] [Min(1)] private float _inkUsagePerSec;
 
@@ -49,21 +49,21 @@ public class InkController : MonoBehaviour
     }
 
     /// <summary>
-    /// Шкала рівня чорнил
+    /// Ink capacity bar
     /// </summary>
     [SerializeField] private Slider _inkProgressBar;
     /// <summary>
-    /// Посилання на клас Level
+    /// Reference to level movement script
     /// </summary>
-    [SerializeField] Level level;
+    [SerializeField] LevelMovement level;
 
     /// <summary>
-    /// Перевірка запасу
+    /// Is there still some ink left
     /// </summary>
     public bool CapacityGreaterThanZero => _currentInkCapacity > 0;
 
     /// <summary>
-    /// Зменшити запас
+    /// Decreases ink capacity
     /// </summary>
     /// <param name="value">значення, на яке зменшити</param>
     public void DecreaseCapacity(float value, bool isDeadly = false)
@@ -91,7 +91,7 @@ public class InkController : MonoBehaviour
     }
 
     /// <summary>
-    /// Зменшити запас
+    /// Decreases ink capacity. Should be called once per frame
     /// </summary>
     public void DecreaseCapacityPerSec()
     {
@@ -106,11 +106,11 @@ public class InkController : MonoBehaviour
 
         _inkProgressBar.value = _currentInkCapacity/_maxInkCapacity;
     }
-    
+
     /// <summary>
-    /// Поповнити запас
+    /// Increases ink capacity
     /// </summary>
-    /// <param name="value">значення, на яке поповнити</param>
+    /// <param name="value">how many you to substract from ink capacity</param>
     public void IncreaseCapacity(float value)
     {
         if (_currentInkCapacity < _maxInkCapacity)
@@ -124,9 +124,9 @@ public class InkController : MonoBehaviour
         
         _inkProgressBar.value = _currentInkCapacity/_maxInkCapacity;
     }
-    
+
     /// <summary>
-    /// Поповнити запас
+    /// Increase ink capacity. Should be called once per frame
     /// </summary>
     public void IncreaseCapacityPerSec()
     {
@@ -143,9 +143,9 @@ public class InkController : MonoBehaviour
     }
 
     /// <summary>
-    /// Вставновити запас чорнила
+    /// Sets ink capacity to a certain percentage
     /// </summary>
-    /// <param name="value">значення у відсотках (від 0 до 1)</param>
+    /// <param name="value">value from 0 to 1</param>
     public void SetCapacityPercentage(float value, bool isDeadly = false)
     {
         
@@ -169,10 +169,10 @@ public class InkController : MonoBehaviour
     }
 
     /// <summary>
-    /// Помножити значення inkUsagePerSec, можна викликати тільки з пастки
+    /// Multiplies inkUsagePerSec. Can be called only from a trap class
     /// </summary>
-    /// <param name="trap">посилання на пастку яка змінить inkUsagePerSec</param>
-    /// <param name="inkUsagePerSecMupltiplier">значення на яке зміниться </param>
+    /// <param name="trap">reference to a trap script from there method is called</param>
+    /// <param name="inkUsagePerSecMupltiplier">multiply value</param>
     public void MultipyInkUsagePerSec(object trap, float inkUsagePerSecMupltiplier)
     {
         if(trap is Interactables.IInteractable)
@@ -182,9 +182,9 @@ public class InkController : MonoBehaviour
     }
 
     /// <summary>
-    /// Повертає _inkUsagePerSec до початкового значення 
+    /// Sets _inkUsagePerSec to initial value. Can be called only from a trap class  
     /// </summary>
-    /// /// <param name="trap">посилання на пастку яка змінить inkUsagePerSec</param>
+    /// /// <param name="trap">reference to a trap script from there method is called</param>
     public void SetInitialInkUsagePerSec(object trap)
     {
         if (trap is Interactables.IInteractable)

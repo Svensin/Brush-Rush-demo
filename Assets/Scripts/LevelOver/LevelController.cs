@@ -9,7 +9,7 @@ using Utilities;
 public class LevelController : MonoBehaviour
 {
     /// <summary>
-    /// Поточний <see cref="GameState"/> гри.
+    /// Current state of the game <see cref="GameState"/> гри.
     /// </summary>
     public GameState CurrentGameState { get; private set; }
 
@@ -20,6 +20,11 @@ public class LevelController : MonoBehaviour
         get => _currentLevel;
         set => SetCurrentSection(value);
     }
+
+    /// <summary>
+    /// Sets what section has to be current
+    /// </summary>
+    /// <param name="value"></param>
     private static void SetCurrentSection(int value)
     {
         if (value > 5 || value < 0)
@@ -49,24 +54,24 @@ public class LevelController : MonoBehaviour
     
     private BlocksSpawner _menuBlocksSpawner;
     private BlocksSpawner _levelBlocksSpawner;
-    private Level _level;
-    private MenuCarrousel _menuCarrousel;
+    private LevelMovement _level;
+    private MenuTableCycleCarrousel _menuCarrousel;
     
     /// <summary>
-    /// <see cref="GameObject"/> головного меню <see cref="MenuUiHandler"/>.
+    /// <see cref="GameObject"/> main menu canvas <see cref="MenuUiHandler"/>.
     /// </summary>
     [SerializeField] private Canvas Menu;
     /// <summary>
-    /// <see cref="GameObject"/> UI на рівні.
+    /// <see cref="GameObject"/> Level UI.
     /// </summary>
     [SerializeField] private GameObject levelUi;
     /// <summary>
-    /// <see cref="GameObject"/> UI на рівні.
+    /// <see cref="GameObject"/> Level UI.
     /// </summary>
     public GameObject LevelUI => levelUi;
     
     /// <summary>
-    /// Канвас поразки
+    /// Canvas of lost level
     /// </summary>
     [SerializeField] GameObject lossCanvas;
 
@@ -74,29 +79,29 @@ public class LevelController : MonoBehaviour
     public CompleteLevelMenu completeLevelMenu;
 
     /// <summary>
-    /// Посилання на слайдер результатів рівня
+    /// reference to victory slider
     /// </summary>
     [SerializeField] private VictorySlider victorySlider;
 
     private bool _firstPhaseCoroutineEnded = false;
 
     /// <summary>
-    /// Стан <see cref="LevelLogic.Level"/>.
+    /// Current state of level at the end <see cref="LevelLogic.LevelMovement"/>.
     /// </summary>
     private enum EndLevelState
     {
         /// <summary>
-        /// <see cref="LevelLogic.Level"/> виграно.
+        /// <see cref="LevelLogic.LevelMovement"/> Level is won.
         /// </summary>
         Victory,
         /// <summary>
-        /// <see cref="LevelLogic.Level"/> програно.
+        /// <see cref="LevelLogic.LevelMovement"/> Level is lost.
         /// </summary>
         Loss
     }
 
     /// <summary>
-    /// Поточний стан рівня.
+    /// Current state at the end of the level.
     /// </summary>
     private EndLevelState _state;
 
@@ -109,7 +114,7 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Викликається при програші
+    /// Called then level is lost
     /// </summary>
     public void OnLoss()
     {
@@ -121,7 +126,7 @@ public class LevelController : MonoBehaviour
 
 
     /// <summary>
-    /// Зупиняє <see cref="LevelLogic.Level"/> та вимикає усі важливі скрипти із <see cref="ScriptReferences"/>.
+    /// Stops <see cref="LevelLogic.LevelMovement"/> and stop important scripts from <see cref="ScriptReferences"/>.
     /// </summary>
     private void StopLevel()
     {
@@ -140,7 +145,7 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// При завершенні рівня зупиняє його та запускає, відповідно до <see cref="Results"/>, першу фазу <see cref="ShowFirstPhase"/> і <see cref="DefineLevelState"/>.
+    /// Then level ends, stops level movement and accordigngly to <see cref="Results"/>, first phase <see cref="ShowFirstPhase"/> and <see cref="DefineLevelState"/>.
     /// </summary>
     public void OnLevelFinish()
     {
@@ -155,9 +160,9 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Визначає поточний стан закінчення <see cref="LevelLogic.Level"/>.
+    /// Defines current state of level ending<see cref="LevelLogic.LevelMovement"/>.
     /// </summary>
-    /// <param name="results">отримані <see cref="Results"/></param>
+    /// <param name="results">received <see cref="Results"/></param>
     /// <returns></returns>
     private IEnumerator DefineLevelState(Results results)
     {
@@ -175,9 +180,9 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Перша фаза - показується прогрес та к-ть зароблених клаптиків.
+    /// First phase shows progress and quantity of earned paintings pieces
     /// </summary>
-    /// <param name="paperPaintedRatio">відсоток <see cref="Results.PaperPaintedRatio"/></param>
+    /// <param name="paperPaintedRatio">percentage of <see cref="Results.PaperPaintedRatio"/></param>
     /// <returns></returns>
     private IEnumerator ShowFirstPhase(float paperPaintedRatio)
     {
@@ -225,7 +230,7 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Починає <see cref="LevelLogic.Level"/> та вмикає усі важливі скрипти з <see cref="ScriptReferences"/> для початку рівня.
+    /// Activates <see cref="LevelLogic.LevelMovement"/> and important scripts from <see cref="ScriptReferences"/> для початку рівня.
     /// </summary>
     private void StartLevel()
     {
@@ -248,11 +253,17 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enables control for player
+    /// </summary>
     public void EnableControl()
     {
         ScriptReferences.Instance.brushControllerScript.enabled = true;
     }
     
+    /// <summary>
+    /// Initializes level then it starts
+    /// </summary>
     public void InitializeLevel()
     {
         _menuCarrousel.Disable();

@@ -4,23 +4,20 @@ using UnityEngine;
 
 namespace Interactables
 {
-    /// <summary>
-    /// Логіка ефекту наждачного паперу
-    /// </summary>
     public class SandPaperEffect : DisappearableTrap
     {
         /// <summary>
-        /// Посилання на InkController
+        /// reference to InkController
         /// </summary>
         InkController inkController;
 
         /// <summary>
-        /// Скільки відсотків наждачка зніме з запасу чорнила
+        /// How many percentage of maximum value trap deals damage to ink capacity
         /// </summary>
         [Range(0f, 100f)] [SerializeField] float sandPaperDamagePercent;
 
         /// <summary>
-        /// Реалізація DisappearableTrap
+        /// Disables trap model
         /// </summary>
         public override void Disappear()
         {
@@ -28,7 +25,7 @@ namespace Interactables
         }
 
         /// <summary>
-        /// Реалізація IInterectable
+        /// Deals damage
         /// </summary>
         public override void Effect()
         {
@@ -38,16 +35,16 @@ namespace Interactables
 
 
             inkController.SetCapacityPercentage(percentToSet,true);
-            ScriptReferences.Instance.brushFlickeringEffect.StartEffect();
+            ScriptReferences.Instance.brushFlickeringEffect.StartOrContinueEffect();
         }
 
         /// <summary>
-        /// Реалізація IInterectable
+        ///Disables collider and starts dissapear animation
         /// </summary>
         public override void Disable()
         {
-            Collider waterCupCollider = GetComponent<Collider>();
-            waterCupCollider.enabled = false;
+            Collider sandPaperCollider = GetComponent<Collider>();
+            sandPaperCollider.enabled = false;
 
             trapAnimator.SetTrigger("Disappear");
         }
@@ -56,7 +53,10 @@ namespace Interactables
         {
             trapAnimator = GetComponent<Animator>();
         }
-
+        /// <summary>
+        /// Starts effect and disables trap
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
             if (inkController == null)

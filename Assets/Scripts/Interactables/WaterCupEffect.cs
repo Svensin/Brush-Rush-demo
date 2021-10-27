@@ -5,12 +5,12 @@ namespace Interactables
     public class WaterCupEffect : DisappearableTrap
     {
         /// <summary>
-        /// Посилання на InkController
+        /// reference to InkController
         /// </summary>
         InkController inkController;
 
         /// <summary>
-        /// Реалізація DisappearableTrap
+        /// Disables model
         /// </summary>
         public override void Disappear()
         {
@@ -18,7 +18,7 @@ namespace Interactables
         }
 
         /// <summary>
-        /// Реалізація IInteractable
+        /// Emptys all ink capacity
         /// </summary>
         public override void Effect()
         {
@@ -26,7 +26,7 @@ namespace Interactables
         }
 
         /// <summary>
-        /// Реалізація IInteractable
+        /// Disables collider and starts dissapear animation
         /// </summary>
         public override void Disable()
         {
@@ -41,6 +41,10 @@ namespace Interactables
             trapAnimator = GetComponent<Animator>();
         }
 
+        /// <summary>
+        /// Starts effect and disables a trap
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
             if (inkController == null)

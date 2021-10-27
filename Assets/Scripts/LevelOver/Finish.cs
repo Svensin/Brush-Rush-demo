@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// При зіткненні об'єкта з пензликом закінчує рівень
+/// Stops level when brush reaches finish zone
 /// </summary>
 public class Finish : MonoBehaviour
 {

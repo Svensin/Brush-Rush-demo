@@ -7,22 +7,22 @@ using Utilities.SaversLoaders;
 namespace Utilities
 {
     /// <summary>
-    /// Зберігає та завантажує дані з файлів
+    /// Saves and loads data from files
     /// </summary>
     public class SaveLoadSystem : SingletonComponent<SaveLoadSystem>
     {
         /// <summary>
-        /// Назва директорії із файлами
+        /// Name of the directory where files are kept
         /// </summary>
         private const string DIRECTORY_NAME = "Files";
 
         /// <summary>
-        /// Назва файлу для галереї
+        /// Name of the gallery file
         /// </summary>
         private const string GALLERY_FILE = "gallery.dat";
-        
+
         /// <summary>
-        /// Назва файлу для фільтрів
+        /// Name of the filters file
         /// </summary>
         private const string FILTERS_FILE = "filters.dat";
 
@@ -31,18 +31,18 @@ namespace Utilities
         private IEnumerable<ISaveLoad> _saveables;
 
         /// <summary>
-        /// Впроваджує залежності усіх класів, що реалізують <see cref="ISaveLoad"/>.
+        /// Creates dependencies of all classes which implement <see cref="ISaveLoad"/>.
         /// </summary>
-        /// <param name="saveables">перечислення усіх класів, що реалізують <see cref="ISaveLoad"/></param>
+        /// <param name="saveables">enumarates of all classes which implement <see cref="ISaveLoad"/></param>
         private void Construct(IEnumerable<ISaveLoad> saveables)
         {
             _saveables = saveables;
         }
 
         /// <summary>
-        /// Ініціалізує та комбінує шлях директорії <see cref="DIRECTORY_NAME"/> у папці <see cref="Application.persistentDataPath"/>
+        /// Initializes and combines directory path <see cref="DIRECTORY_NAME"/> in folder <see cref="Application.persistentDataPath"/>
         /// </summary>
-        /// <returns>Повертає шлях</returns>
+        /// <returns>Path</returns>
         private string InitDataPath()
         {
             var directory = Path.Combine(Application.persistentDataPath, DIRECTORY_NAME);
@@ -112,7 +112,7 @@ namespace Utilities
         }
 
         /// <summary>
-        /// Завантажує дані з усіх класів, що реалізують <see cref="ISaveLoad"/>.
+        /// Loads data from all classes which implement <see cref="ISaveLoad"/>.
         /// </summary>
         public void LoadData()
         {
@@ -123,7 +123,7 @@ namespace Utilities
         }
 
         /// <summary>
-        /// Зберігає дані усіх класів, що реалізують <see cref="ISaveLoad"/>.
+        /// Saves data from all classes which implement <see cref="ISaveLoad"/>.
         /// </summary>
         public void SaveData()
         {

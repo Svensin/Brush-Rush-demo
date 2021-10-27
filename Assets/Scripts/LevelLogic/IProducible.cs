@@ -6,7 +6,7 @@
     public interface IProducible
     {
         /// <summary>
-        /// Відповідає за створення
+        /// Makes level objects to appear
         /// </summary>
         void Produce();
         

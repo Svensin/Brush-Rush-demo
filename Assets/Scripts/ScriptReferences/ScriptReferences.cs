@@ -20,7 +20,7 @@ public class ScriptReferences : SingletonComponent<ScriptReferences>
     [SerializeField] public LinePainter linePainterScript;
     
     [Header("LevelLogic scripts")][Space]
-    [SerializeField] public Level levelScript;
+    [SerializeField] public LevelMovement levelScript;
     [SerializeField] public LevelFinalResultsCalculator levelFinalResultsCalculator;
     [SerializeField] public LevelController levelController;
     
@@ -28,7 +28,7 @@ public class ScriptReferences : SingletonComponent<ScriptReferences>
     [SerializeField] public AngerBar angerBar;
 
     [Header("Menu")][Space]
-    [SerializeField] public MenuCarrousel menuCarrousel;
+    [SerializeField] public MenuTableCycleCarrousel menuCarrousel;
     public MenuUiHandler menuUiHandler;
     
     [Header("Blocks spawners")][Space]

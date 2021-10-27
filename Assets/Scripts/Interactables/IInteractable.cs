@@ -6,12 +6,12 @@ namespace Interactables
     public interface IInteractable
     {
         /// <summary>
-        /// Реалізація ефекту, який надається об'єктом
+        /// Activates effect of interactable
         /// </summary>
         void Effect();
 
         /// <summary>
-        /// Реалізація методу, коли ефект об'єкту треба деактивувати
+        /// Starts interactable disappear animation 
         /// </summary>
         void Disable();
     }

@@ -5,20 +5,20 @@ using UnityEngine;
 public class LineContainer : MonoBehaviour
 {
     /// <summary>
-    /// об'єкт, що зберігатиме на собі лінії намалальовані пензнликом на об'єкті, на який накладено скрипт
+    /// Object which will be parent obeject for lines
     /// </summary>
     [SerializeField] private Transform container;
 
     /// <summary>
-    /// публічне проперті, що дозволяє доступитись до контейнера при потребі(напр. при зіткненні)
+    /// public property which allows to work with container then needed
     /// </summary>
     public Transform Container { get => container; set => container = value; }
 
 
     /// <summary>
-    /// засовує лінію в конетйнер(батьківський об'єкт)
+    /// puts line into container(parent object)
     /// </summary>
-    /// <param name="line">Контейнер в якому зберігатиметься лінія</param> 
+    /// <param name="line">Line which will be saved in container</param> 
     public void SetLineToContainer(Transform line)
     {
         line.parent = container;

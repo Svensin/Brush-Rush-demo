@@ -6,29 +6,29 @@ using Utilities.ScriptableObjects;
 namespace UiLogic.SpriteSwappers
 {
     /// <summary>
-    /// Змінює спрайт картини.
-    /// Навішений на <see cref="GameObject"/> ColorButton на кожній картині в <see cref="Gallery"/>.
+    /// Changes painting sprite.
+    /// Is assingned <see cref="GameObject"/> ColorButton on every painting in <see cref="Gallery"/>.
     /// </summary>
     public class PaintingSpriteSwapper : SpriteSwapper
     {
         /// <summary>
-        /// Текст кнопки під картиною
+        /// Button text under the painting
         /// </summary>
         [Header("Current painting")]
         [SerializeField] protected Text buttonText;
         
         /// <summary>
-        /// Текст для кольорування
+        /// Text for colorizing
         /// </summary>
         private const string COLORIZED = "Colorize";
         /// <summary>
-        /// Текст для чорно-білого
+        /// Text for black and white
         /// </summary>
         private const string BLACK_AND_WHITE = "B&W";
 
         /// <summary>
-        /// Змінює <see cref="Sprite"/> <see cref="currentImage"/> на <see cref="blackAndWhitePainting"/> або <see cref="colorizedPainting"/>.
-        ///Додається на OnClick на компоненті <see cref="Button"/>.
+        /// Swaps <see cref="Sprite"/> <see cref="currentImage"/> for <see cref="blackAndWhitePainting"/> or <see cref="colorizedPainting"/>.
+        ///Is added on OnClick component of <see cref="Button"/>.
          /// </summary>
         public override void Swap()
         {

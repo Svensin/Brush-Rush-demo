@@ -1,36 +1,33 @@
 using UnityEngine;
 
-/// <summary>
-/// Малювальник ліній.
-/// </summary>
 public class LinePainter : MonoBehaviour
 {
     /// <summary>
-    /// Поточний LineRenderer
+    /// Current LineRenderer which Line Painter works with
     /// </summary>
     private LineRenderer _currentLineRenderer;
     /// <summary>
-    /// Стартова позиція поточної лінії по Z
+    /// Start position Z value
     /// </summary>
     private float _currentLineStartPositionZ;
     /// <summary>
-    /// Трансформ рівня (для руху)
+    /// Transform of the level
     /// </summary>
     [SerializeField] private Transform Level;
     /// <summary>
-    /// Запас чорнил
+    /// ink capacity
     /// </summary>
     [SerializeField] private float _inkCapacity;
     /// <summary>
-    /// Відступ лінії по Y
+    /// little line end offset on y value
     /// </summary>
     [SerializeField] private float _lineYOffset;
     /// <summary>
-    /// Префаб лінії
+    /// Line prefab
     /// </summary>
     [SerializeField] private GameObject _linePrefab;
     /// <summary>
-    /// Об'єкт у який додаються "погані" лінії 
+    /// Bad lines(painted on table, not on paper) container 
     /// </summary>
     [SerializeField] private GameObject badLines;
 
@@ -47,7 +44,7 @@ public class LinePainter : MonoBehaviour
     }
 
     /// <summary>
-    /// Відмальовує лінію за кінчиком пензлика
+    /// Draws line which follows brush tip
     /// </summary>
     public void DrawLine()
     {
@@ -61,9 +58,9 @@ public class LinePainter : MonoBehaviour
     }
 
     /// <summary>
-    /// Створює лінію
+    /// Creates new line
     /// </summary>
-    /// <param name="lineContainer">Об'єкт у якому зберігатиметься лінія</param>
+    /// <param name="lineContainer">Game Object which will be the parent of a new line</param>
     private void CreateLine(LineContainer lineContainer)
     {
         var brushTipPosition = transform.position;
@@ -79,9 +76,9 @@ public class LinePainter : MonoBehaviour
     }
 
     /// <summary>
-    /// Визначає чи створювати лінію, і якщо так, то в якому об'єкті
+    /// Defines if line should be created and assigns this line to correct container
     /// </summary>
-    /// <param name="other">Колайдер у який входить пензлик</param>
+    /// <param name="other">Collider which brush tip collided with</param>
     private void OnTriggerEnter(Collider other)
     {
         if (_inkController.CapacityGreaterThanZero)
@@ -97,9 +94,9 @@ public class LinePainter : MonoBehaviour
     }
 
     /// <summary>
-    /// Визначає чи потрібно переривати лінію, якщо лінія не належить контейнеру на якому знаходиться колайдер з яким взяємодіє пензлик, то непотрібно
+    /// Defines if line should be interrupted
     /// </summary>
-    /// <param name="other">Колайдер, з якого виходить пензлик</param>
+    /// <param name="other">Collider which brush tip collided with</param>
     private void OnTriggerExit(Collider other)
     {
         if (_currentLineRenderer == null)
@@ -124,7 +121,7 @@ public class LinePainter : MonoBehaviour
 
 
     /// <summary>
-    /// Зупиняє процес промальовки лінії
+    /// Stops line painting
     /// </summary>
     public void CutLine()
     {

@@ -9,19 +9,19 @@ using UnityEngine;
 public class BrushFlickeringEffect : MonoBehaviour
 {
     /// <summary>
-    /// Скільки повинен тривати ефект, в секундах
+    /// How much time effect has to last in seconds
     /// </summary>
     [SerializeField] float duration;
     /// <summary>
-    /// Тривалість появи/зникання пензля
+    /// Duration of single appearance/disappearance of brush
     /// </summary>
     [SerializeField] float oneFlickDuration;
     /// <summary>
-    /// Посилання на модель пензля
+    /// Reference to brush model
     /// </summary>
     [SerializeField] GameObject brushModel;
     /// <summary>
-    /// Скільки лишилось пензлику блимати в секундах
+    /// How many seconds left for effect to last
     /// </summary>
     private float currenrEffectTimeLeft;
 
@@ -31,9 +31,9 @@ public class BrushFlickeringEffect : MonoBehaviour
     }
 
     /// <summary>
-    /// Початок ефекту блимання або продовження якщо ефекти в момент виклику метода активний
+    /// Starts or resets effect duration
     /// </summary>
-    public void StartEffect()
+    public void StartOrContinueEffect()
     {
         if (currenrEffectTimeLeft == duration)
         {
@@ -46,7 +46,7 @@ public class BrushFlickeringEffect : MonoBehaviour
     }
 
     /// <summary>
-    /// Корутіна ефекту блимання
+    /// Starts to deactivate/activate brush model
     /// </summary>
     private IEnumerator EffectCoroutine()
     {

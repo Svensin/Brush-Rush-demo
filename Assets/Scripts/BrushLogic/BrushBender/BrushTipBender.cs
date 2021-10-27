@@ -4,23 +4,23 @@ using UnityEngine;
 using UnityEngine.Animations;
 
 /// <summary>
-/// Клас що згинає кінчик пензля при взаємодії йлого з якоюсь поверхнею
+/// Class, which bends brush's tip then brush paints
 /// </summary> 
 public class BrushTipBender : MonoBehaviour
 {
     /// <summary>
-    /// Посиланна на аніматор меша пензлика
+    /// Reference to brush tip animator
     /// </summary>     
     [SerializeField]private Animator tipAniamtor;
 
     /// <summary>
-    /// Змінна що вказує на те чи торкається пензлик поверхні, потрібна для точності визначення взаємодії кінчика при зміні поверхні з якою взяємодіє пензлик
+    /// Defines if brush`s tip is triggered by something
     /// </summary>
     private bool isTriggered = false;
 
 
     /// <summary>
-    /// При взаємодії кінчик пензлика згинається 
+    /// Starts to bend brush`s tip
     /// </summary>
     private void OnTriggerEnter(Collider other)
     {
@@ -29,7 +29,7 @@ public class BrushTipBender : MonoBehaviour
     }
 
     /// <summary>
-    /// Потрібен для додаткової перевірки при моментальній зміні поверхні з яким взаємодіє пензлик 
+    /// Additional check if brush`s tip is being triggered by something 
     /// </summary>
     private void OnTriggerStay(Collider other)
     {
@@ -45,7 +45,7 @@ public class BrushTipBender : MonoBehaviour
     }
 
     /// <summary>
-    /// При припененні взаємодії кінчик пензля розгинається
+    /// Stops brush`s tip bending
     /// </summary>
     private void OnTriggerExit(Collider other)
     {

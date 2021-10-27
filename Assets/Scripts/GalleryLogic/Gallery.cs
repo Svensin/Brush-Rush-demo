@@ -11,12 +11,10 @@ namespace GalleryLogic
     /// </summary>
     public class Gallery : SingletonComponent<Gallery>
     {
-        /// <summary>
-        /// UI для <see cref="Gallery"/>.
-        /// </summary>
+        
         [SerializeField] private GalleryUi galleryUi;
         /// <summary>
-        /// UI для <see cref="Gallery"/>.
+        /// UI for <see cref="Gallery"/>.
         /// </summary>
         public GalleryUi GalleryUi => galleryUi;
 
@@ -24,12 +22,12 @@ namespace GalleryLogic
         [SerializeField] private List<GameObject> filters;
     
         /// <summary>
-        /// Список картин.
+        /// Liist of all paintings.
         /// </summary>
         public List<Image> Paintings => paintings;
 
         /// <summary>
-        /// Список фільтрів на картини
+        /// List of filters which can be applied to paintings
         /// </summary>
         public List<GameObject> Filters => filters;
     
@@ -37,15 +35,15 @@ namespace GalleryLogic
         private GameObject _currentFilter;
 
         /// <summary>
-        /// Поточна картина.
+        /// The current painting which is being painted
         /// </summary>
         public Image CurrentPainting => currentPainting;
 
         /// <summary>
-        /// Призначає поточну <see cref="CurrentPainting"/>.
+        /// Sets new current painting <see cref="CurrentPainting"/>.
         /// </summary>
-        /// <param name="sender">ініціатор виклику</param>
-        /// <param name="newCurrentPainting">нова поточна картина</param>
+        /// <param name="sender">where the method was called from</param>
+        /// <param name="newCurrentPainting">a painting which you want to set as current painting</param>
         public void SetCurrentPainting(object sender, Image newCurrentPainting)
         {
             if (sender is GallerySaverLoader)
@@ -65,7 +63,7 @@ namespace GalleryLogic
         }
 
         /// <summary>
-        /// Змінює <see cref="CurrentPainting"/>.
+        /// Changes <see cref="CurrentPainting"/> to the next one.
         /// </summary>
         private void ChangeCurrentPainting()
         {
@@ -82,9 +80,9 @@ namespace GalleryLogic
         }
 
         /// <summary>
-        /// Оновлює <see cref="CurrentPainting"/> із дубліката.
+        /// Updates <see cref="CurrentPainting"/> from duplicate.
         /// </summary>
-        /// <param name="duplicatePainting">дублікат картини</param>
+        /// <param name="duplicatePainting">duplicate of the painting</param>
         public void UpdateCurrentPainting(GameObject duplicatePainting)
         {
             List<Transform> children = new List<Transform>();

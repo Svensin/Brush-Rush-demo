@@ -6,26 +6,24 @@ using UnityEngine;
 using Random = System.Random;
 using Utilities;
 
-/// <summary>
-/// Меню, яке показується після проходження <see cref="LevelLogic.Level"/>.
-/// </summary>
+
 public class CompleteLevelMenu : MonoBehaviour
 {
     /// <summary>
-    /// <see cref="Utilities.SaveLoadData.Painting.pieces"/>, що закривають картину
+    /// <see cref="Utilities.SaveLoadData.Painting.pieces"/>, which covers the painting
     /// </summary>
     private List<GameObject> pieces;
 
     /// <summary>
-    /// Чи закінчилась перша фаза
+    /// Is first phase over
     /// </summary>
     private bool _firstPhaseFinished;
 
     /// <summary>
-    /// Перевіряє чи перша фаза <see cref="LevelController"/> після проходження рівня закінчена.
+    /// Checks if first phase <see cref="LevelController"/> after level completion is over.
     /// </summary>
-    /// <param name="sender">ініціатор виклику</param>
-    /// <param name="value">значення</param>
+    /// <param name="sender">object who executes the method</param>
+    /// <param name="value">if first phase is over</param>
     public void FirstPhaseFinished(object sender, bool value)
     {
         if (sender is LevelController || sender is CompleteLevelMenu)
@@ -39,25 +37,25 @@ public class CompleteLevelMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Дублікат картини з галереї на VictoryCanvas
+    /// Duplicae of panting from gallery for VictoryCanvas
     /// </summary>
     private GameObject _duplicatePainting;
     
     /// <summary>
-    /// Шаблон для картин
+    /// Template for painting
     /// </summary>
     [SerializeField] private RectTransform templateRectTransform;
 
 
     /// <summary>
-    /// Посилання на меню перемоги рівня
+    /// Reference to victory menu
     /// </summary>
     [SerializeField] private GameObject victoryCanvas;
 
     /// <summary>
-    /// Відкрити меню виграшу
+    /// Opens victory menu
     /// </summary>
-    /// <param name="levelResults">результати рівня</param>
+    /// <param name="levelResults">results of the level</param>
     public void OpenCompleteLevelMenu(Results levelResults)
     {
         SetImagePieces();
@@ -66,9 +64,9 @@ public class CompleteLevelMenu : MonoBehaviour
 
     
     /// <summary>
-    /// Додає картину з <see cref="Gallery"/>.
+    /// Adds painting from <see cref="Gallery"/>.
     /// </summary>
-    /// <returns>дублікат картини</returns>
+    /// <returns>Duplicate of the painting</returns>
     private GameObject AddPaintingFromGallery()
     {
         var duplicate = Instantiate(Gallery.Instance.CurrentPainting, victoryCanvas.transform);
@@ -90,7 +88,7 @@ public class CompleteLevelMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Зібрати частини полотна
+    /// Puts together pieces of the painting
     /// </summary>
     private void SetImagePieces()
     {
@@ -110,9 +108,9 @@ public class CompleteLevelMenu : MonoBehaviour
     }
     
     /// <summary>
-    /// Обробити отримані <see cref="Results"/>
+    /// Process received <see cref="Results"/>
     /// </summary>
-    /// <param name="levelResults">результати рівня</param>
+    /// <param name="levelResults"></param>
     private void ProcessResults(Results levelResults)
     {
         var imagePieces = ProcessImagePieces( levelResults.ImagePiecesCount);
@@ -123,9 +121,9 @@ public class CompleteLevelMenu : MonoBehaviour
   
 
     /// <summary>
-    /// Друга фаза - показується <see cref="Gallery.CurrentPainting"/>, зникають клаптики
+    /// On the second phase <see cref="Gallery.CurrentPainting"/> shows up, some pieces are vanishing
     /// </summary>
-    /// <param name="imagePiecesAnimators">аніматори ігрових-об'єктів-клаптиків</param>
+    /// <param name="imagePiecesAnimators">animators of pieces</param>
     /// <returns></returns>
     private IEnumerator ShowSecondPhase(Animator[] imagePiecesAnimators)
     {
@@ -136,12 +134,10 @@ public class CompleteLevelMenu : MonoBehaviour
             pieceAnimator.gameObject.SetActive(false);
         }
         
-        //змінюємо картину в галереї
         Gallery.Instance.UpdateCurrentPainting(_duplicatePainting);
         
         LevelController.CurrentLevel++;
 
-        //зберігаємо
         SaveLoadSystem.Instance.SaveData();
         
         foreach (var pieceAnimator in imagePiecesAnimators)
@@ -168,10 +164,10 @@ public class CompleteLevelMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Оброблюються частинки полотна.
+    /// Processes all painting pieces
     /// </summary>
-    /// <param name="count">к-ть клаптиків</param>
-    /// <returns>масив <see cref="GameObject"/> клаптиків</returns>
+    /// <param name="count">pieces quantity</param>
+    /// <returns>array <see cref="GameObject"/>of pieces</returns>
     private Animator[] ProcessImagePieces(int count)
     {
         if (count > pieces.Count)

@@ -5,24 +5,24 @@ namespace Interactables
     public class HoleEffect : MonoBehaviour, IInteractable
     {
         /// <summary>
-        /// Посилання на пензлик
+        /// reference to brush gameobject
         /// </summary>
         private GameObject _brush;
         /// <summary>
-        /// Посилання на LevelLogic
+        /// reference to LevelLogic
         /// </summary>
-        private LevelLogic.Level _level;
+        private LevelLogic.LevelMovement _level;
         /// <summary>
-        /// Посилання на колайдер провалини
+        /// reference to collider of the hole
         /// </summary>
         private Collider _collider;
         /// <summary>
-        /// Прискорення, що надається пензлику при падінні в провалину
+        /// acceleration of brush then it falls into hole
         /// </summary>
         [SerializeField] private float _acceleration;
 
         /// <summary>
-        /// Реалізація IInteractable
+        /// Stops level movement and disables it`s collider
         /// </summary>
         public void Disable()
         {
@@ -31,7 +31,7 @@ namespace Interactables
         }
 
         /// <summary>
-        /// Реалізація IInteractable
+        /// Makes brush fall down
         /// </summary>
         public void Effect()
         {

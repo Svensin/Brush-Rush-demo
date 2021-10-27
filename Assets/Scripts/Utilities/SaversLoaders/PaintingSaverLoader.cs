@@ -9,12 +9,12 @@ using Utilities.SaveLoadData;
 namespace Utilities.SaversLoaders
 {
     /// <summary>
-    /// Зберігає та завантажує дані, пов'язані із <see cref="Painting"/> та <see cref="Gallery"/>
+    /// Saves and loads data of <see cref="Gallery"/>.
     /// </summary>
     public class PaintingSaverLoader : ISaveLoad
     {
         /// <summary>
-        /// Зберігає картини з <see cref="Gallery"/> у JSON-файл.
+        /// Save painting of <see cref="Gallery"/> in JSON-file.
         /// </summary>
         private void SavePaintings()
         {
@@ -26,9 +26,9 @@ namespace Utilities.SaversLoaders
             using StreamWriter file = File.CreateText(Path.Combine(SaveLoadSystem.Instance.DataPath, SaveLoadSystem.Instance.GalleryFileName));
             file.Write(json);
         }
-        
+
         /// <summary>
-        /// Завантажує картини у <see cref="Gallery"/> з JSON-файлу.
+        /// Loads painting of <see cref="Gallery"/> from JSON-file.
         /// </summary>
         private void LoadPaintings()
         {
@@ -43,10 +43,10 @@ namespace Utilities.SaversLoaders
 
 
         /// <summary>
-        /// Оновлює дані картин з <see cref="Painting"/> у <see cref="GameObject"/>.
+        /// Update data from <see cref="Painting"/> in <see cref="GameObject"/>.
         /// </summary>
-        /// <param name="images">список ігрових об'єктів-картин</param>
-        /// <param name="paintings">список картин-даних</param>
+        /// <param name="images">list of game objects-paintings</param>
+        /// <param name="paintings">list of paintings data</param>
         private static void UpdatePaintingsData(List<Image> images, Painting[] paintings)
         {
             for (int i = 0; i < images.Count; i++)
@@ -54,13 +54,13 @@ namespace Utilities.SaversLoaders
                 Painting.UpdateImagePieces(paintings[i], images[i].gameObject);
             }
         }
-        
-       
+
+
         /// <summary>
-        /// Оброблює та витягує з ігрових об'єктів-картин дані
+        /// Processes and load from game objects-paintigs
         /// </summary>
-        /// <param name="paintingImages">список ігрових об'єктів-картин</param>
-        /// <returns>масив <see cref="Painting"/> для збереження</returns>
+        /// <param name="paintingImages">list of game objects-paintings</param>
+        /// <returns>array of <see cref="Painting"/> for saving</returns>
         private static Painting[] ProcessPaintingsData(List<Image> paintingImages)
         {
             Painting[] paintings = new Painting[paintingImages.Count];

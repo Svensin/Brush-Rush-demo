@@ -4,17 +4,17 @@ using UnityEngine;
 namespace Utilities
 {
     /// <summary>
-    /// Обгортка над <see cref="JsonUtility"/> для роботи з масивами 
+    /// Wrapper of <see cref="JsonUtility"/> for work with arrays 
     /// </summary>
     public static class JsonUtilityArrayWrapper
     {
         /// <summary>
-        /// Серіалізація в JSON
+        /// Serialization in JSON
         /// </summary>
-        /// <param name="array">масив об'єктів</param>
-        /// <param name="prettyPrint">чи структорований JSON</param>
-        /// <typeparam name="T">тип об'єктів</typeparam>
-        /// <returns>JSON-рядок</returns>
+        /// <param name="array">array of objects</param>
+        /// <param name="prettyPrint">or structured JSON</param>
+        /// <typeparam name="T">type of objects</typeparam>
+        /// <returns>JSON-line</returns>
         public static string ToJson<T>(T[] array, bool prettyPrint = false)
         {
             var wrapper = new Wrapper<T> {Items = array};

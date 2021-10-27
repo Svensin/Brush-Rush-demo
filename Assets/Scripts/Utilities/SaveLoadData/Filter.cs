@@ -4,22 +4,22 @@ using UnityEngine;
 namespace Utilities.SaveLoadData
 {
     /// <summary>
-    /// Серіалізована модель фільтра картини для збереження/завантаження у <see cref="SaversLoaders.GallerySaverLoader"/>.
+    /// serealized model of painting filter for saving/loading in/from <see cref="SaversLoaders.GallerySaverLoader"/>.
     /// </summary>
     [Serializable]
     public class Filter
     {
         /// <summary>
-        /// Чи увімкнений фільтр картини у галереї
+        /// is filter enabled on painting
         /// </summary>
         public bool isEnabled;
 
         /// <summary>
-        /// Оновлює ігровий об'єкт <see cref="GameObject"/> із моделі <see cref="Filter"/>.
+        /// Update game object <see cref="GameObject"/> from model of <see cref="Filter"/>.
         /// </summary>
-        /// <param name="filterData">модель-фільтр</param>
-        /// <param name="gameObject">ігровий об'єкт фільтра</param>
-        /// <returns>змінений ігровий об'єкт фільтра(optional)</returns>
+        /// <param name="filterData">model-filter</param>
+        /// <param name="gameObject">game object of the filter</param>
+        /// <returns>changed game object of the filter(optional)</returns>
         public static GameObject UpdateFilter(Filter filterData, GameObject gameObject)
         {
             gameObject.SetActive(filterData.isEnabled);

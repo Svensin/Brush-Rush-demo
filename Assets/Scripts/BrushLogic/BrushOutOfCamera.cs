@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Описує логіку пензлика, коли той поза камерою
+/// Class which deactivates brush model then brush is out of camera`s sight
 /// </summary>
 public class BrushOutOfCamera : MonoBehaviour
 {
     /// <summary>
-    /// Фізичне тіло пензлика
+    /// Reference to brush rigidbody
     /// </summary>
     [SerializeField] private Rigidbody _rigidbody;
+
+    /// <summary>
+    /// deactivates brush rigidbody and model
+    /// </summary>
     private void OnBecameInvisible()
     {
         gameObject.SetActive(false);

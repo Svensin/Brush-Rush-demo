@@ -7,16 +7,16 @@ using UnityEngine.UI;
 namespace UiLogic
 {
     /// <summary>
-    /// Керує зникненням <see cref="Scrollbar"/> в <see cref="Gallery.GalleryPanel"/>.
+    /// Conrtrols disappearence of <see cref="Scrollbar"/> in <see cref="Gallery.GalleryPanel"/>.
     /// </summary>
     public class GalleryScrollBar : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         /// <summary>
-        /// Зображення заднього фону <see cref="Scrollbar"/>>.
+        /// Background image of <see cref="Scrollbar"/>>.
         /// </summary>
         [SerializeField] private Image scrollBarBackground;
         /// <summary>
-        /// Зображення ручки <see cref="Scrollbar"/>>.
+        /// Handle image of <see cref="Scrollbar"/>>.
         /// </summary>
         [SerializeField] private Image scrollBarHandle;
 
@@ -31,7 +31,7 @@ namespace UiLogic
         }
 
         /// <summary>
-        /// Показує <see cref="Scrollbar"/>.
+        /// Makes <see cref="Scrollbar"/ appear>.
         /// </summary>
         private void ShowScrollBar()
         {
@@ -53,7 +53,7 @@ namespace UiLogic
         }
 
         /// <summary>
-        /// <see cref="Coroutine"/>, яка показує <see cref="Scrollbar"/>.
+        /// <see cref="Coroutine"/> which makes <see cref="Scrollbar"/ disappear>.
         /// </summary>
         /// <returns></returns>
         IEnumerator Fade()

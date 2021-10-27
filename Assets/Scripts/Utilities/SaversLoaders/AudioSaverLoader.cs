@@ -3,6 +3,9 @@ using Utilities.SaveLoadData;
 
 namespace Utilities.SaversLoaders
 {
+    /// <summary>
+    /// Saves data of audio.
+    /// </summary>
     public class AudioSaverLoader : ISaveLoad
     {
         public void Save()

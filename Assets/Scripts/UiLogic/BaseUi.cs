@@ -2,27 +2,27 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Базовий клас для усіх панелей, які відкривають та закриваються.
+/// Base class for all panels, which can be opened/closed
 /// </summary>
 public abstract class BaseUi : MonoBehaviour
 {
     /// <summary>
-    /// Панель яка закривається/відкривається.
+    /// Panel which can be opened/closed
     /// </summary>
     [SerializeField] protected Canvas panelCanvas;
     
     /// <summary>
-    /// Кнопка яка відкриває/закриває панель.
+    /// Button which opens/closes the panel
     /// </summary>
     [SerializeField] protected Button closePanelButton;
 
     /// <summary>
-    /// Відкриває <see cref="panelCanvas"/>.
+    /// Closes <see cref="panelCanvas"/>.
     /// </summary>
     public abstract void Close();
 
     /// <summary>
-    /// Закриває <see cref="panelCanvas"/>.
+    /// Opens <see cref="panelCanvas"/>.
     /// </summary>
     public abstract void Open();
 

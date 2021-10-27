@@ -5,7 +5,7 @@ public class SingletonComponent<T> : MonoBehaviour where T : MonoBehaviour
     private static T _instance;
 
     /// <summary>
-    /// Повертає посилання на єдний об'єкт класу
+    /// Current instance of singleton
     /// </summary>
     public static T Instance
     {
@@ -22,7 +22,6 @@ public class SingletonComponent<T> : MonoBehaviour where T : MonoBehaviour
 
     private void OnEnable()
     {
-        //шукаємо чи є ще gameobject'и з таким компонентом
         var curObjectScripts = FindObjectsOfType<T>();
 
         if (curObjectScripts.Length > 1)

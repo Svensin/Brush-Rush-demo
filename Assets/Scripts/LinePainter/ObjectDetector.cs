@@ -2,19 +2,19 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Детектор паперу.
-/// Спрацьовує на колайдер початку і кінця паперу.
-/// Вимикає колайдер столу, якщо пензлик знаходиться над папером.
+/// Paper detector.
+/// Reacts to paper`s start and end colliders
+/// Turns of table collider if brush is over the paper
 /// </summary>
 public class ObjectDetector : MonoBehaviour
 {
     /// <summary>
-    /// Колайдер столу
+    /// Table collider
     /// </summary>
     [SerializeField] BoxCollider tableCollider;
 
     /// <summary>
-    /// Зміщення колайдера столу для того щоб стіл перестав колайдитись
+    /// Table collider offset
     /// </summary>
     [Min(0)] [SerializeField] float tableColliderOffset;
     [Min(0)] [SerializeField] float brushMinPointOffset;
@@ -25,9 +25,9 @@ public class ObjectDetector : MonoBehaviour
     // TODO: відрефакторити методи що зміщують точку мінімуму
 
     /// <summary>
-    /// Визначає у який колайдер входить детектор
+    /// Defines which paper collider has been detected
     /// </summary>
-    /// <param name="other">Колайдер у який входить</param>
+    /// <param name="other">Paper start or end collider</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Producable"))

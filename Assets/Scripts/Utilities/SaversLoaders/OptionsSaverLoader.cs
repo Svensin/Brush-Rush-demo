@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Utilities.SaversLoaders
 {
+    /// <summary>
+    /// Saves data of <see cref="Options"/>.
+    /// </summary>
     public class OptionsSaverLoader : ISaveLoad
     {
         public void Save()

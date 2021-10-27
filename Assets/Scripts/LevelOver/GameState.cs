@@ -1,6 +1,6 @@
 
     /// <summary>
-    /// Стан гри
+    /// States of the game
     /// </summary>
     public enum GameState
     {

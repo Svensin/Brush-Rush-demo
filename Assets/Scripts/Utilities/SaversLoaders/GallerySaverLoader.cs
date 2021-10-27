@@ -8,7 +8,7 @@ using Utilities.SaveLoadData;
 namespace Utilities.SaversLoaders
 {
     /// <summary>
-    /// Зберігає дані пов'язані із <see cref="Gallery"/>.
+    /// Saves data of <see cref="Gallery"/>.
     /// </summary>
     public class GallerySaverLoader : ISaveLoad
     {
