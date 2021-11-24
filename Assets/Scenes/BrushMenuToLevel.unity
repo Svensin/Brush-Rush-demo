@@ -1213,7 +1213,7 @@ MonoBehaviour:
   BrushPoint: {fileID: 3636595320699679740}
   _currentBlock: {fileID: 0}
   _lastBlock: {fileID: 0}
-  carrouselSpeed: 6
+  blockslSpeed: 0
 --- !u!1001 &1658248710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2878,7 +2878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brushLevelPositionLerp: 0.5
   gettingBackSpeed: 3
-  brush: {fileID: 3636595321045048087}
+  brushTransform: {fileID: 3636595321045048087}
   minPositionTransform: {fileID: 3636595320699679740}
   maxPositionTransform: {fileID: 3636595320935666360}
   brushLogicAniamtor: {fileID: 3636595321479327354}
